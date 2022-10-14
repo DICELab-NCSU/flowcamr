@@ -8,6 +8,7 @@ This package is currently in development, and is hosted on GitHub. To install,
 ```{r}
 # install.packages("remotes")
 remotes::install_github("DICELab-NCSU/flowcamr")
+library(flowcamr")
 ```
 
 ## Functionality
