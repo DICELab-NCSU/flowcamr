@@ -1,0 +1,17 @@
+Package: flowcamr
+Type: Package
+Title: Utilities for FlowCam Data
+Version: 0.1.0
+Authors@R: c(
+    person(given = "William",
+           family = "Petry",
+           role = c("aut", "cre"),
+           email = "wpetry@ncsu.edu",
+           comment = c(ORCID = "0000-0002-5230-5987")))
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
