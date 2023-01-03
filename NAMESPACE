@@ -2,5 +2,5 @@
 
 export(get_flowcam_meta)
 export(harvest_fc_meta)
-export(is_valid_fc_meta)
 importFrom(lubridate,ymd)
+importFrom(utils,write.csv)

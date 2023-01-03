@@ -6,13 +6,18 @@
 \usage{
 get_flowcam_meta(x, output = NULL)
 }
+\arguments{
+\item{x}{Path to a single FlowCam 'Run Summaries' file or a directory containing multiple
+such files.}
+
+\item{output}{Path to output .csv file. Defaults to NULL, which will not write a file.}
+}
+\value{
+A data frame summarizing the metadata from the supplied file(s), optionally also
+writing a .csv file.
+}
 \description{
 Harvests meta-data from one or more FlowCam 'Run Summaries' file. Typically,
 this won't be called by the user directly. Instead, \code{get_flowcam_meta()} sould be used
 instead.
-@param x Path to a single FlowCam 'Run Summaries' file or a directory containing multiple
-such files.
-@param output Path to output .csv file. Defaults to NULL, which will not write a file.
-@return A data frame summarizing the metadata from the supplied file(s), optionally also
-writing a .csv file.
 }

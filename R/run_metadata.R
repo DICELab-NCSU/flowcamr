@@ -3,7 +3,6 @@
 #' @param x A character vector, resulting from `readLines()`.
 #' @return Logical.
 #' @author William Petry <wpetry@@ncsu.edu>
-#' @export is_valid_fc_meta
 is_valid_fc_meta <- function(x) {
   len <- identical(length(x), 61L)
   header <- grepl("Run Summaries", x[1])
@@ -22,8 +21,8 @@ is_valid_fc_meta <- function(x) {
 #' @export harvest_fc_meta
 harvest_fc_meta <- function(x) {
   Run_name <- gsub("^Name: ", "", x[[3]])
-  Date <- ymd(regmatches(x[[28]],
-                                regexpr("202[0-9]-[0-9]+-[0-9]+", x[[28]])))
+  Date <- lubridate::ymd(regmatches(x[[28]],
+                                    regexpr("202[0-9]-[0-9]+-[0-9]+", x[[28]])))
   Time <- regmatches(x[[28]],
                             regexpr("[0-9]{2}:[0-9]{2}:[0-9]{2}", x[[28]]))
   Efficiency <- as.numeric(regmatches(x[[14]],
@@ -42,11 +41,12 @@ harvest_fc_meta <- function(x) {
 #' @description Harvests meta-data from one or more FlowCam 'Run Summaries' file. Typically,
 #'  this won't be called by the user directly. Instead, `get_flowcam_meta()` sould be used
 #'  instead.
-#'  @param x Path to a single FlowCam 'Run Summaries' file or a directory containing multiple
+#' @param x Path to a single FlowCam 'Run Summaries' file or a directory containing multiple
 #'  such files.
-#'  @param output Path to output .csv file. Defaults to NULL, which will not write a file.
-#'  @return A data frame summarizing the metadata from the supplied file(s), optionally also
+#' @param output Path to output .csv file. Defaults to NULL, which will not write a file.
+#' @return A data frame summarizing the metadata from the supplied file(s), optionally also
 #'  writing a .csv file.
+#' @importFrom utils write.csv
 #' @export get_flowcam_meta
 get_flowcam_meta <- function(x, output = NULL) {
   if (dir.exists(x)) {
@@ -72,7 +72,7 @@ get_flowcam_meta <- function(x, output = NULL) {
     stop("x must be a file or directory")
   }
   if (!is.null(output)) {
-    write.csv(out, file = output, row.names = FALSE)
+    utils::write.csv(out, file = output, row.names = FALSE)
   }
   return(out)
 }
