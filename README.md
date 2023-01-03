@@ -1,4 +1,6 @@
 # flowcamr
+[![R-CMD-check](https://github.com/DICELab-NCSU/flowcamr/actions/workflows/R-CMD-check.yml/badge.svg?branch=main)](https://github.com/DICELab-NCSU/flowcamr/actions/workflows/R-CMD-check.yml)
+
 Utilities for FlowCam Data
 
 This package provides tools for working with particle and imagery data produced on a [FlowCam](https://www.fluidimaging.com/products/flowcam-8000).
