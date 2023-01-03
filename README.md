@@ -1,7 +1,11 @@
 # flowcamr
-[![R-CMD-check](https://github.com/DICELab-NCSU/flowcamr/actions/workflows/R-CMD-check.yml/badge.svg?branch=main)](https://github.com/DICELab-NCSU/flowcamr/actions/workflows/R-CMD-check.yml)
-
 Utilities for FlowCam Data
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/DICELab-NCSU/flowcamr/actions/workflows/R-CMD-check.yml/badge.svg?branch=main)](https://github.com/DICELab-NCSU/flowcamr/actions/workflows/R-CMD-check.yml)
+[![CRAN status](https://www.r-pkg.org/badges/version/flowcamr)](https://CRAN.R-project.org/package=flowcamr)
+<!-- badges: end -->
 
 This package provides tools for working with particle and imagery data produced on a [FlowCam](https://www.fluidimaging.com/products/flowcam-8000).
 
