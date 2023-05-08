@@ -4,7 +4,7 @@
 #' @return Logical.
 #' @author William Petry <wpetry@@ncsu.edu>
 is_valid_fc_meta <- function(x) {
-  len <- identical(length(x), 61L)
+  len <- length(x) %in% c(55L, 61L)
   header <- grepl("Run Summaries", x[1])
   vis <- any(sapply(x, function(x) grepl("VisualSpreadsheet", x)))
   return(all(len, header, vis))
