@@ -22,5 +22,13 @@ library("flowcamr")
 - `get_flowcam_meta` operates on 'Run Summaries' .csv files that have been exported from Visual Spreadsheet. Metadata are gathered across all files supplied,
 summarized into a data frame, and optionally exported to a .csv summary.
 
+### 2. Generating barcodes
+- `mk_barcodes` generates a PDF of QR-style barcodes that can be printed on sticky labels for robust, automated sample identification. Additional data can be included in the barcode that is not displayed in the human-readable text using the `experiment` argument.
+
+```
+mk_barcodes("my_barcodes.pdf", experiment = "gladiators", resident = "AB", invader = "CD", reps = 20:30)
+```
+![my_barcodes.pdf](man/figures/my_barcodes.png)
+
 ## Contributing
 We welcome bug reports, feature requests, and contributed code.
