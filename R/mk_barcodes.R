@@ -24,7 +24,7 @@
 #' mk_barcodes(file = "ABxCD_barcodes.pdf", experiment = "competition", resident = "AB", invader = "CD", reps = 3:6)
 #'
 mk_barcodes <- function(file = "barcodes.pdf",
-                        experiment = "Growth_Nutr_Assay",
+                        experiment = "Pairwise-Assay",
                         resident, invader = NULL,
                         reps = 6,
                         byrow = TRUE, skip_row = 0L, skip_col = 0L,

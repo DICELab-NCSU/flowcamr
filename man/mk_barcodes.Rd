@@ -6,7 +6,7 @@
 \usage{
 mk_barcodes(
   file = "barcodes.pdf",
-  experiment = "Growth_Nutr_Assay",
+  experiment = "Pairwise-Assay",
   resident,
   invader = NULL,
   reps = 6,
