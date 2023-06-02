@@ -2,5 +2,6 @@
 
 export(get_flowcam_meta)
 export(harvest_fc_meta)
+export(mk_barcodes)
 importFrom(lubridate,ymd)
 importFrom(utils,write.csv)
