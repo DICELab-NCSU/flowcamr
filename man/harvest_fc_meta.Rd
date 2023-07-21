@@ -14,7 +14,7 @@ A data frame containing harvested meta-data.
 }
 \description{
 Harvests meta-data from a FlowCam 'Run Summaries' file. Typically,
-this won't be called by the user directly. Instead, \code{get_flowcam_meta()} sould be used
+this won't be called by the user directly. Instead, \code{get_flowcam_meta()} should be used
 instead.
 }
 \author{

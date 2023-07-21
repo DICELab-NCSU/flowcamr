@@ -4,15 +4,14 @@
 #' @return Logical.
 #' @author William Petry <wpetry@@ncsu.edu>
 is_valid_fc_meta <- function(x) {
-  len <- length(x) %in% c(55L, 61L)
   header <- grepl("Run Summaries", x[1])
   vis <- any(sapply(x, function(x) grepl("VisualSpreadsheet", x)))
-  return(all(len, header, vis))
+  return(all(header, vis))
 }
 
 #' Harvest FlowCam 'Run Summaries' meta-data from a single file
 #' @description Harvests meta-data from a FlowCam 'Run Summaries' file. Typically,
-#'  this won't be called by the user directly. Instead, `get_flowcam_meta()` sould be used
+#'  this won't be called by the user directly. Instead, `get_flowcam_meta()` should be used
 #'  instead.
 #' @param x A character vector, resulting from `readLines()`.
 #' @return A data frame containing harvested meta-data.
@@ -20,17 +19,21 @@ is_valid_fc_meta <- function(x) {
 #' @importFrom lubridate ymd
 #' @export harvest_fc_meta
 harvest_fc_meta <- function(x) {
-  Run_name <- gsub("^Name: ", "", x[[3]])
-  Date <- lubridate::ymd(regmatches(x[[28]],
-                                    regexpr("202[0-9]-[0-9]+-[0-9]+", x[[28]])))
-  Time <- regmatches(x[[28]],
-                            regexpr("[0-9]{2}:[0-9]{2}:[0-9]{2}", x[[28]]))
-  Efficiency <- as.numeric(regmatches(x[[14]],
-                                      regexpr("[0-9\\.]+", x[[14]])))
-  Fluid_Imaged_mL <- as.numeric(regmatches(x[[13]],
-                                           regexpr("[0-9\\.]+", x[[13]])))
-  N_particles <- as.integer(regmatches(x[[15]],
-                                       regexpr("[0-9]+", x[[15]])))
+  runs <- which(grepl("^Name: ", x))
+  Run_name <- gsub("^Name: ", "", x[runs])
+  dates <- which(grepl("^	Start Time", x))
+  Date <- lubridate::ymd(regmatches(x[dates],
+                                    regexpr("202[0-9]-[0-9]+-[0-9]+", x[dates])))
+  Time <- regmatches(x[dates], regexpr("[0-9]{2}:[0-9]{2}:[0-9]{2}", x[dates]))
+  effs <- which(grepl("^	Efficiency", x))
+  Efficiency <- as.numeric(regmatches(x[effs],
+                                      regexpr("[0-9\\.]+", x[effs])))
+  fluids <- which(grepl("^	Fluid Volume Imaged", x))
+  Fluid_Imaged_mL <- as.numeric(regmatches(x[fluids],
+                                           regexpr("[0-9\\.]+", x[fluids])))
+  parts <- which(grepl("^	Particle Count", x))
+  N_particles <- as.integer(regmatches(x[parts],
+                                       regexpr("[0-9]+", x[parts])))
   out <- data.frame(Run_name = Run_name, Date = Date, Time = Time,
                     Efficiency = Efficiency, Fluid_Imaged_mL = Fluid_Imaged_mL,
                     N_particles = N_particles)

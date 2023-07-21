@@ -21,8 +21,10 @@
 #' @export
 #'
 #' @examples
-#' mk_barcodes(file = "ABxCD_barcodes.pdf", experiment = "competition", resident = "AB", invader = "CD", reps = 3:6)
-#'
+#' \dontrun{
+#' mk_barcodes(file = "ABxCD_barcodes.pdf", experiment = "competition", resident = "AB",
+#'  invader = "CD", reps = 3:6)
+#' }
 mk_barcodes <- function(file = "barcodes.pdf",
                         experiment = "Pairwise-Assay",
                         resident, invader = NULL,
@@ -39,10 +41,6 @@ mk_barcodes <- function(file = "barcodes.pdf",
   if(template != "SL582") stop("Only SheetLabels SL582 template is currently supported.")
   if(skip_row > 16) stop("All rows skipped. Reduce 'skip_row'.")
   if(skip_col > 6) stop("All columns skipped. Reduce 'skip_col'.")
-  if(byrow == FALSE & (skip_row + skip_col) > 0L) {
-    byrow <- TRUE
-    warning("Rows and columns cannot be skipped when filling column-wise. Setting byrow = TRUE.")
-  }
   # set reps
   if(length(reps) == 1L) reps <- 1:reps
   # make labels

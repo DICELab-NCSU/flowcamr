@@ -55,6 +55,8 @@ the sticky labels on which barcodes are printed. Currently supported labels are:
 }
 }
 \examples{
-mk_barcodes(file = "ABxCD_barcodes.pdf", experiment = "competition", resident = "AB", invader = "CD", reps = 3:6)
-
+\dontrun{
+mk_barcodes(file = "ABxCD_barcodes.pdf", experiment = "competition", resident = "AB",
+ invader = "CD", reps = 3:6)
+}
 }
